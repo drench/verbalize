@@ -12,7 +12,7 @@ module Verbalize
     end
 
     def action_inputs
-      self.class.inputs.map { |i| [i, self.send(i)] }.to_h
+      self.class.inputs.map { |i| [i, send(i)] }.to_h
     end
 
     def self.included(target)

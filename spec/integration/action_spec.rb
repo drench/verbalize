@@ -20,14 +20,16 @@ describe Verbalize::Action do
     let(:input_tester) do
       Class.new do
         include Verbalize::Action
-        input :a, :b, optional: [:c, {d: 1, e: ->{ 2 }}]
-        def call; action_inputs; end
+        input :a, :b, optional: [:c, { d: 1, e: -> { 2 } }]
+        def call
+          action_inputs
+        end
       end
     end
 
     it 'pulls all passed in values' do
       results = input_tester.call!(a: :foo, b: :bar, d: 3)
-      expect(results).to eq({a: :foo, b: :bar, c: nil, d: 3, e: 2})
+      expect(results).to eq(a: :foo, b: :bar, c: nil, d: 3, e: 2)
     end
   end
 
@@ -302,7 +304,7 @@ describe Verbalize::Action do
       let(:some_class) do
         Class.new do
           include Verbalize::Action
-          input optional: [:a, :b]
+          input optional: %i[a b]
         end
       end
 
@@ -315,7 +317,7 @@ describe Verbalize::Action do
       let(:some_class) do
         Class.new do
           include Verbalize::Action
-          input :a, :b, optional: [:c, :d]
+          input :a, :b, optional: %i[c d]
         end
       end
 
@@ -368,7 +370,7 @@ describe Verbalize::Action do
       let(:some_class) do
         Class.new do
           include Verbalize::Action
-          input :a, optional: [:b, :c]
+          input :a, optional: %i[b c]
         end
       end
 
@@ -395,7 +397,7 @@ describe Verbalize::Action do
       let(:some_class) do
         Class.new do
           include Verbalize::Action
-          input optional: [:a, :b]
+          input optional: %i[a b]
         end
       end
 
@@ -434,7 +436,7 @@ describe Verbalize::Action do
       let(:some_class) do
         Class.new do
           include Verbalize::Action
-          input :a, :b, optional: [:c, :d]
+          input :a, :b, optional: %i[c d]
         end
       end
 

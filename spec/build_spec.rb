@@ -30,7 +30,7 @@ attr_reader :required_argument
     end
 
     it 'builds an action with multiple required arguments' do
-      result = described_class.call([:required_argument_1, :required_argument_2])
+      result = described_class.call(%i[required_argument_1 required_argument_2])
 
       expect(result).to eql \
         <<-CODE
@@ -85,7 +85,7 @@ attr_reader :optional_argument
     end
 
     it 'builds an action with multiple optional arguments' do
-      result = described_class.call([], [:optional_argument_1, :optional_argument_2])
+      result = described_class.call([], %i[optional_argument_1 optional_argument_2])
 
       expect(result).to eql \
         <<-CODE
@@ -142,8 +142,8 @@ attr_reader :required_argument, :optional_argument
 
     it 'builds an action with multiple required  and optional arguments' do
       result = described_class.call(
-        [:required_argument_1, :required_argument_2],
-        [:optional_argument_1, :optional_argument_2]
+        %i[required_argument_1 required_argument_2],
+        %i[optional_argument_1 optional_argument_2]
       )
 
       expect(result).to eql \
@@ -175,7 +175,7 @@ attr_reader :required_argument_1, :required_argument_2, :optional_argument_1, :o
 
   context 'with default inputs' do
     it 'builds an action with just default arguments' do
-      result = described_class.call([], [], [:default1, :default2])
+      result = described_class.call([], [], %i[default1 default2])
 
       expect(result).to eql \
         <<-CODE
