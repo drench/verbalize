@@ -1,0 +1,11 @@
+{
+  "lib/verbalize/*.rb": {
+    "type": "lib",
+    "alternate": "spec/{}_spec.rb"
+  },
+
+  "spec/*_spec.rb": {
+    "type": "spec",
+    "alternate": "lib/verbalize/{}.rb"
+  }
+}
