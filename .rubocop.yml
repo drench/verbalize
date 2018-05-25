@@ -1,5 +1,12 @@
 AllCops:
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.3
+
+Layout/IndentHeredoc:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
 
 Metrics/LineLength:
   Max: 120
@@ -9,3 +16,6 @@ Documentation:
 
 Style/Alias:
   EnforcedStyle: prefer_alias_method
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
